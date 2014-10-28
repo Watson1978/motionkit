@@ -17,6 +17,22 @@ Motion::Project::App.setup do |app|
 
   app.pods do
     pod 'AWSiOSSDKv2'
-    pod 'SupportKit'
+    # pod 'SupportKit'
   end
+
+  # SupportKit
+  app.vendor_project('vendor/SupportKit/SupportKit.framework', :static,
+    :products => ['SupportKit']
+  )
+  app.frameworks += %w(
+    CoreGraphics.framework
+    CoreTelephony.framework
+    CoreText.framework
+    Foundation.framework
+    OpenGLES.framework
+    QuartzCore.framework
+    SystemConfiguration.framework
+    UIKit.framework
+  )
+  app.libs << '/usr/lib/libxml2.dylib'
 end
